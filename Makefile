@@ -6,6 +6,10 @@ GOFMTCHECK = test -z `gofmt -l -s -w *.go | tee /dev/stderr`
 GOTEST = go test -v
 COVER = $(GOTEST) -coverprofile=$(COVEROUT) -covermode=atomic -race
 GOPATH?=$(HOME)/go
+GITCOMMIT:=$(shell git describe --dirty --always)
+BINARY:=coredns
+SYSTEM:=
+VERBOSE:=-v
 
 all: get fmt test
 coredns: get build
@@ -36,7 +40,7 @@ test:
 
 .PHONY: build
 build:
-	CGO_ENABLED=0 $(SYSTEM) go build $(VERBOSE) -ldflags="-s -w -X github.com/coredns/coredns/coremain.GitCommit=$(GITCOMMIT)" -o coredns
+	CGO_ENABLED=0 $(SYSTEM) go build $(VERBOSE) -ldflags="-s -w -X github.com/coredns/coredns/coremain.GitCommit=$(GITCOMMIT)" -o $(BINARY)
 
 
 # Use the 'release' target to start a release
