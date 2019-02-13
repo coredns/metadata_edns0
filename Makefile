@@ -8,6 +8,7 @@ COVER = $(GOTEST) -coverprofile=$(COVEROUT) -covermode=atomic -race
 GOPATH?=$(HOME)/go
 
 all: get fmt test
+coredns: get build
 
 .PHONY: fmt
 fmt:
@@ -32,6 +33,11 @@ get:
 test:
 	@echo "Running tests..."
 	@$(COVER)
+
+.PHONY: build
+build:
+	CGO_ENABLED=0 $(SYSTEM) go build $(VERBOSE) -ldflags="-s -w -X github.com/coredns/coredns/coremain.GitCommit=$(GITCOMMIT)" -o $(BINARY)
+
 
 # Use the 'release' target to start a release
 .PHONY: release
