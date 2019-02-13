@@ -7,10 +7,13 @@ import (
 
 	"github.com/coredns/coredns/plugin"
 	"github.com/coredns/coredns/plugin/metadata"
+	clog "github.com/coredns/coredns/plugin/pkg/log"
 	"github.com/coredns/coredns/request"
 
 	"github.com/miekg/dns"
 )
+
+var log = clog.NewWithPlugin("metadata_edns0")
 
 const (
 	typeEDNS0Bytes = iota
@@ -53,7 +56,10 @@ func (m metadataEdns0) ServeDNS(ctx context.Context, w dns.ResponseWriter, r *dn
 }
 
 // Name implements the Handler interface.
-func (m metadataEdns0) Name() string { return "metadata_edns0" }
+func (m metadataEdns0) Name() string { return Name() }
+
+// Name is the name of the plugin.
+func Name() string { return "metadata_edns0" }
 
 func (m *metadataEdns0) Metadata(ctx context.Context, state request.Request) context.Context {
 	return m.registerFuncExtractEDNS0(ctx, state.Req)

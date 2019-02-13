@@ -11,7 +11,7 @@ import (
 )
 
 func init() {
-	caddy.RegisterPlugin("metadata_edns0", caddy.Plugin{
+	caddy.RegisterPlugin(Name(), caddy.Plugin{
 		ServerType: "dns",
 		Action:     setup,
 	})
@@ -21,7 +21,7 @@ func setup(c *caddy.Controller) error {
 	r, err := parse(c)
 
 	if err != nil {
-		return plugin.Error("metadata_edns0", err)
+		return plugin.Error(Name(), err)
 	}
 
 	dnsserver.GetConfig(c).AddPlugin(func(next plugin.Handler) plugin.Handler {
