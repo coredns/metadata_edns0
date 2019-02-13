@@ -11,7 +11,7 @@ SYSTEM:=
 VERBOSE:=-v
 
 all: get fmt test
-coredns: get build
+coredns: build
 
 .PHONY: fmt
 fmt:
