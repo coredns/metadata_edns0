@@ -3,11 +3,15 @@ TAG:=v$(VERSION)
 
 COVEROUT = cover.out
 GOFMTCHECK = test -z `gofmt -l -s -w *.go | tee /dev/stderr`
-GOTEST = go test -v
-COVER = $(GOTEST) -coverprofile=$(COVEROUT) -covermode=atomic -race
+COVER = cd plugin/metadata_edns0 && go test -v -coverprofile=$(COVEROUT) -covermode=atomic -race
 GOPATH?=$(HOME)/go
+GITCOMMIT:=$(shell git describe --dirty --always)
+BINARY:=coredns
+SYSTEM:=
+VERBOSE:=-v
 
 all: get fmt test
+coredns: build
 
 .PHONY: fmt
 fmt:
@@ -32,6 +36,11 @@ get:
 test:
 	@echo "Running tests..."
 	@$(COVER)
+
+.PHONY: build
+build:
+	CGO_ENABLED=0 $(SYSTEM) go build $(VERBOSE) -ldflags="-s -w -X github.com/coredns/coredns/coremain.GitCommit=$(GITCOMMIT)" -o $(BINARY)
+
 
 # Use the 'release' target to start a release
 .PHONY: release
