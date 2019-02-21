@@ -1,5 +1,3 @@
-++TEST
-
 # metadata_edns0
 
 # Name 
@@ -19,5 +17,3 @@ metadata_edns0 {
 
 The plugin currently supports the `hex`, `bytes`, and `address` format.
 So far, only 'hex' format is supported with params <length> <start> <end>.
-
-
