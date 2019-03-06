@@ -3,20 +3,24 @@ TAG:=v$(VERSION)
 
 COVEROUT = cover.out
 GOFMTCHECK = test -z `gofmt -l -s -w *.go | tee /dev/stderr`
-COVER = cd plugin/metadata_edns0 && go test -v -coverprofile=$(COVEROUT) -covermode=atomic -race
+COVER = cd plugin/metadata_edns0 && GO111MODULE=on go test -v -coverprofile=$(COVEROUT) -covermode=atomic -race
 GOPATH?=$(HOME)/go
 GITCOMMIT:=$(shell git describe --dirty --always)
 BINARY:=coredns
 SYSTEM:=
 VERBOSE:=-v
 
-all: fmt test
+all: get fmt test
 coredns: build
 
 .PHONY: fmt
 fmt:
 	@echo "Checking format..."
 	@$(GOFMTCHECK)
+
+.PHONY: get
+get:
+    GO111MODULE=on go get -v
 
 .PHONY: test
 test:
