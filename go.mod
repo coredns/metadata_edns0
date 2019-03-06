@@ -3,12 +3,12 @@ module github.com/coredns/metadata_edns0
 go 1.12
 
 require (
+	github.com/DataDog/dd-trace-go v0.6.1 //indirect
 	github.com/Shopify/sarama v1.21.0 // indirect
 	github.com/apache/thrift v0.12.0 // indirect
 	github.com/aws/aws-sdk-go v1.17.11 // indirect
 	github.com/coredns/coredns v1.4.0
 	github.com/coreos/etcd v3.3.12+incompatible // indirect
-	github.com/DataDog/dd-trace-go v0.6.1 //indirect
 	github.com/dnstap/golang-dnstap v0.0.0-20170829151710-2cf77a2b5e11 // indirect
 	github.com/farsightsec/golang-framestream v0.0.0-20181102145529-8a0cb8ba8710 // indirect
 	github.com/flynn/go-shlex v0.0.0-20150515145356-3f9db97f8568 // indirect
@@ -36,16 +36,17 @@ require (
 	github.com/prometheus/client_model v0.0.0-20190129233127-fd36f4220a90 // indirect
 	github.com/prometheus/common v0.2.0 // indirect
 	github.com/spf13/pflag v1.0.3 // indirect
+	github.com/ugorji/go/codec v0.0.0-20190204201341-e444a5086c43 // indirect
 	golang.org/x/crypto v0.0.0-20190228161510-8dd112bcdc25 // indirect
 	golang.org/x/net v0.0.0-20190301231341-16b79f2e4e95 // indirect
 	golang.org/x/sys v0.0.0-20190305064518-30e92a19ae4a // indirect
 	golang.org/x/time v0.0.0-20181108054448-85acf8d2951c // indirect
 	google.golang.org/grpc v1.19.0 // indirect
 	gopkg.in/inf.v0 v0.9.1 // indirect
-	k8s.io/api v0.0.0-20190301173355-16f65c82b8fa // indirect
-	k8s.io/apimachinery v0.0.0-20190301173222-2f7e9cae4418 // indirect
-	k8s.io/client-go v10.0.0+incompatible // indirect
-	k8s.io/klog v0.2.0 // indirect
-	k8s.io/kube-openapi v0.0.0-20180928202339-9dfdf9be683f
+	k8s.io/api v0.0.0-20181204000039-89a74a8d264d // indirect
+	k8s.io/apimachinery v0.0.0-20181127025237-2b1284ed4c93 //indirect
+	k8s.io/client-go v10.0.0+incompatible //indirect
+	k8s.io/klog v0.0.0-20181108234604-8139d8cb77af // indirect
+	k8s.io/kube-openapi v0.0.0-20180928202339-9dfdf9be683f // indirect
 	sigs.k8s.io/yaml v1.1.0 // indirect
 )
