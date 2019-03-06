@@ -8,6 +8,7 @@ require (
 	github.com/aws/aws-sdk-go v1.17.11 // indirect
 	github.com/coredns/coredns v1.4.0
 	github.com/coreos/etcd v3.3.12+incompatible // indirect
+	github.com/DataDog/dd-trace-go v0.6.1 //indirect
 	github.com/dnstap/golang-dnstap v0.0.0-20170829151710-2cf77a2b5e11 // indirect
 	github.com/farsightsec/golang-framestream v0.0.0-20181102145529-8a0cb8ba8710 // indirect
 	github.com/flynn/go-shlex v0.0.0-20150515145356-3f9db97f8568 // indirect
