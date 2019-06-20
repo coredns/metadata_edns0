@@ -37,9 +37,6 @@ buildMetadataEdns0Image: &buildMetadataEdns0Image
   - run:
       name: Build latest CoreDNS+metadata_edns0 Docker image
       command: |
-        mkdir -p ~/go/src/${CIRCLE_PROJECT_USERNAME}/metadata_edns0
-        git clone https://github.com/${CIRCLE_PROJECT_USERNAME}/metadata_edns0 ~/go/src/${CIRCLE_PROJECT_USERNAME}/metadata_edns0
-
         cd ~/go/src/${CIRCLE_PROJECT_USERNAME}/metadata_edns0
         GO111MODULE=on go get -v -d
         make coredns SYSTEM="GOOS=linux" && \
