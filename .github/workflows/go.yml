@@ -51,12 +51,12 @@ jobs:
         uses: actions/setup-go@v2
         id: go
 
-    - name: Check out code
-      uses: actions/checkout@v2
+     - name: Check out code
+       uses: actions/checkout@v2
 
-    - name: Build
-      run: go build -v ./...
+     - name: Build
+       run: go build -v ./...
 
-    - name: Test
-      run: |
-        make test
+     - name: Test
+       run: |
+         make test
