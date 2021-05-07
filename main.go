@@ -5,7 +5,7 @@ import (
 	_ "github.com/coredns/coredns/core/plugin"
 	"github.com/coredns/coredns/coremain"
 
-	"github.com/coredns/metadata_edns0/plugin/metadata_edns0"
+	metadataEdns0 "github.com/coredns/metadata_edns0/plugin/metadata_edns0"
 )
 
 func init() {
