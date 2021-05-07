@@ -12,17 +12,18 @@ jobs:
         uses: actions/setup-go@v2
         id: go
 
-      - name: Install goimports
-        run: go get golang.org/x/tools/cmd/goimports
+      - run: |
+          echo "GOPATH=${HOME}/go" >> $GITHUB_ENV
 
-      - name: Check code
-        uses: actions/checkout@v2
-      - run: goimports -w $(find . -type f -name '*.go' -not -path "*/vendor/*")
+      - uses: actions/checkout@v2
 
-      - name: Verify no changes from goimports
+      - name: verify goimports
         run: |
-          if [ -n "$(git status --porcelain)" ]; then
-            git status    # These are the files that failed to pass the check.
+          files=$(go run golang.org/x/tools/cmd/goimports -format-only -l .)
+          # Sadly goimports doesn't use exit codes
+          if [[ -n "${files}" ]]; then
+            echo "::error ::goimports should be run on these files:"
+            echo "${files}"
             exit 1
           fi
 
@@ -36,9 +37,9 @@ jobs:
       - name: Check code
         uses: actions/checkout@v2
 
-      - run: find . -name go.mod -execdir go mod tidy \;
+      - run: go mod tidy
 
-      - name: Verify no changes from goimports and go mod tidy.
+      - name: Verify no changes from go mod tidy.
         run: |
           if [ -n "$(git status --porcelain)" ]; then
             git status    # These are the files that failed to pass the check.
