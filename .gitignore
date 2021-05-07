@@ -1,4 +1,5 @@
 coredns
+metadata_edns0
 Corefile
 .idea
 
